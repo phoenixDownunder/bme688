@@ -1,0 +1,27 @@
+# --- --- --- ---
+# Over Temperature Anomaly test...
+# Run the command (with debug if more information is required)...
+# bme688 fsm -f over_temp_anomaly.txt [debug]
+#
+# Branch to a second state on a TEMPERATURE ABOVE anomaly.
+# Loop 10 times then terminate if no anomaly.
+# Second state terminates.
+# Control C to interrupt.
+# --- --- --- ---
+# All lines containing the # character are ignored no matter where the character is.
+# --- --- --- ---
+-
+state 1
+sensor 0
+loop 10
+loop_delay 1000
+next 3
+anomaly 1
+anomalyCondition 1
+anomalyValue 18
+nextOnAnomaly 3
+style 1
+-
+state 3
+terminate 1
+-

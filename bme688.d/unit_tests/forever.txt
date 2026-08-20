@@ -1,0 +1,84 @@
+# --- --- --- ---
+# FOREVER...
+# Test file for a TPH loop forever.
+# Control C to interrupt.
+# Branch to a second state on a TEMPERATURE ABOVE anomaly.
+# Branch from the second state to a terminate state on PRESSURE ANOMALY.
+# --- --- --- ---
+# All line containing the # character are ignored no matter where the character is.
+# Copy and past each state group and adjust the values to suit.
+# Rename each group State numbers. If there is a duplicate state number,
+# the second is used and the first is ignored.
+# The state numbers can any unique value but its not vital.
+# The state keyword is used to create a new linked list node.
+#
+# state 1 <- unique integer between 0 and say 64 (upper limit is alterable)
+# sensor 0 <- 0 is a TPH operation,  1 is a TPHG operation. Default/error is 0.
+# loop 4 <- repeat this state n times before s->next state unless an anomaly.
+# loop_delay 1000 <- loop cycle time in mS. Minimum set to 250mS. No sensible max.
+# next 2 <- next STATE as defined by the state variable. If invalid, everything stops.
+# prev 0 <- linked list state caller.
+#
+# anomalyValue 9999 <- value recovered in ohms to trigger an nextOnAnomaly state change.
+# anomalyValue1 <- low range value. 
+# anomalyValue2 <- upper range value. 
+#
+# anomaly 1 <- Type of anomaly detected for this State. T(1)P(2)H(3)G(4) values.
+# anomaly 1 temperature anomaly
+# anomaly 2 pressure anomaly
+# anomaly 3 humidity anomaly
+# anomaly 4 gas anomaly
+# anomaly 0 and anything else ignored
+#
+# anomalyCondition 1 greater than, -1 less than, 2 outside range anomalyValue1 and anomalyValue2
+# nextOnAnomaly 1 <- Alternate NEXT state after an anomaly. If invalid, stop.
+#
+# gas_wait_time 0 <- wait time defined between 0 and 4032mS as per document.
+# res_heat_temp 0 <- heater temperature between 0 and MAXTEMP (350 at the moment)
+- <- convenient state definition separator, could also use #
+#
+# If any option is missing, a default (usually 0) is set.
+# The default loop_delay is 1000mS.
+# The default loop count is 1 completed cycle, then termination.
+# The default s->next is NULL which terminates.
+# The default s->nextOnAnomaly is NULL which terminates.
+# The default sensor operation is TPH only.
+#
+# OPTIONAL parameters...
+#
+# There are 3 modes of operation, sleep, forced or parallel mode.
+# FORCED_MODE is always the default operating mode unless the...
+# descriptor "parallel" is included AFTER THE DESCRIPTOR profile.
+#
+# Can specify the starting register set in forced mode using nb_conv
+# or the numeric sequence required in parallel mode.
+# nb_conv 0..9. nb_conv default is 0.
+#
+# sensor (see above) is also an optional directive. The default(0) is a TPH (no gas) operation.
+# style <- 0..5, selects the display format required. 1 is the default for detailed display.
+-
+state 1
+sensor 0
+loop 0
+loop_delay 1000
+next 2
+anomaly 1
+anomalyCondition 1
+anomalyValue 18
+nextOnAnomaly 2
+style 0
+-
+state 2
+sensor 0
+loop 2
+loop_delay 1000
+next 3
+anomaly 2
+anomalyCondition 1
+anomalyValue 1026
+nextOnAnomaly 3
+style 0
+-
+state 3
+terminate 1
+-
