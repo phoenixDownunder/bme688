@@ -46,7 +46,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 /* Defines needed for the i2cDevicesHeader.h */
-#define GENERIC
+#define BME688
 
 #include <time.h>
 struct timespec ts; /* Used in icm20948ConvenientBits.h */
