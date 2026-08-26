@@ -140,11 +140,24 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "i2cConvenientBits.h"
 #include "i2cAdapterHandlers.h"
 
+#ifdef BME688
 #include "signalDataStructures.h"
+#endif
 
+#ifdef BME280
 #include "i2cCommonSharedMemoryDataStructure.h"
 #include "i2cSharedMemoryMaster.h"
+#endif
 
-/* End of i2cIncludes.h */
+#ifdef BME688
+#include "i2cCommonSharedMemoryDataStructure.h"
+#include "i2cSharedMemoryMaster.h"
+#endif
+
+#ifdef TMP117
 
 #endif
+
+#endif
+
+/* End of i2cIncludes.h */
