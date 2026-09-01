@@ -34,7 +34,7 @@
 --
 # Device Reference
 
-* The reference document for the BMS688 is...
+* The reference document for the BME688 is...
  * BST-BME688-DS000-03
  * Revision 1.3 February 2024.
  * [bme688](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme688-ds000.pdf) pdf document link as of August 2026.
