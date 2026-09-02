@@ -9,7 +9,7 @@
 
 * The bme688 is an advanced multi sensor system containing Temperature, Humidity and Pressure sensors along with a multi function Gas (TPHG) sensor on a single chip.
 
-* The BME688 version used here is the SparkFun Qwiic BME688-Environmental-Sensor-Breakout. See the image at [SparkFun BME688](SparkFun-©-BME688-_Environmental_Sensor_Breakout)
+* The BME688 version used here is the SparkFun Qwiic BME688-Environmental-Sensor-Breakout. See the image at [SparkFun BME688](https://github.com/phoenixDownunder/bme688/blob/main/SparkFun-©-BME688-_Environmental_Sensor_Breakout.jpg)
 
 --
 # Contents
